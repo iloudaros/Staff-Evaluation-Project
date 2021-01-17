@@ -14,7 +14,6 @@ CREATE TABLE `employee` (
   `sistatikes` varchar(35),
   `certificates` varchar(35),
   `awards` varchar(35),
-  `CV` varchar(35),
   `exp_years` tinyint(4)
 );
 

@@ -63,7 +63,7 @@ CREATE TABLE `project` (
 
 CREATE TABLE `languages` (
   `employee` varchar(12),
-  `lang` ENUM ('EN', 'FR', 'SP', 'GR'),
+  `lang` SET('EN','FR','SP','GR'),
   PRIMARY KEY (`employee`, `lang`)
 );
 

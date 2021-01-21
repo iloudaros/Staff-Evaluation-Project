@@ -54,7 +54,7 @@ CREATE TABLE `needs` (
 
 CREATE TABLE `project` (
   `empl` varchar(12),
-  `num` tinyint(4),
+  `num` tinyint(4) UNIQUE AUTO_INCREMENT,
   `descr` text,
   `url` varchar(60),
   PRIMARY KEY (`empl`, `num`)

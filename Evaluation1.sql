@@ -179,6 +179,7 @@ ALTER TABLE `evaluationresult` ADD FOREIGN KEY (`job_id`) REFERENCES `job` (`id`
 
 ALTER TABLE `log` ADD FOREIGN KEY (`user`) REFERENCES `user` (`username`);
 
+
 insert into user values ('iloudaros','hnBHWK','Ioannis','Loudaros','2015-11-27 9:14:16','iloudaros@upnet.gr');
 insert into user values ('xkratim','Jh87Xw','Xristina','Kratimenou','2014-05-14 8:10:45','xkratim@upnet.gr');
 insert into user values ('sjames','WS6dZr','Sheila','James','2014-01-11 10:17:21','sjames@tech.com');
@@ -346,4 +347,49 @@ insert into evaluationresult values ('sknowles','ewhite','0009','','');
 insert into evaluationresult values ('emarch','ddavis','0005','','');
 insert into evaluationresult values ('emarch','agreenl','0006','','');
 insert into evaluationresult values ('aanson','anelson','0007','','');
+
+
+DELIMITER $ 
+
+CREATE PROCEDURE seeevalresults (em_name varchar(25),em_surname varchar(35))
+BEGIN 
+DECLARE em_name varchar(25);
+DECLARE em_surname varchar(35);
+DECLARE em_username varchar(12);
+
+SELECT name INTO em_name FROM user WHEN employee.username = user.username;
+SELECT surname INTO em_surname FROM user WHEN employee.username = user.username;
+SELECT COUNT job_id FROM requestevaluation WHERE 
+
+DELIMITER ; 
+
+
+DELIMITER $
+CREATE TRIGGER loginfo_u AFTER URDATE ON job
+FOR EACH ROW 
+
+DELIMITER ; 
+
+
+DELIMITER $ 
+CREATE TRIGGER logifo_i  AFTER INSERT ON job
+FOR EACH ROW 
+
+DELIMITER ;
+
+
+DELIMITER $ 
+CREATE TRIGGER loginfo_d AFTER DELETE ON job
+FOR EACH ROW 
+
+DELIMITER ; 
+
+DELIMITER $ 
+CREATE TRIGGER not_allowed1 AFTER UPDATE ON company
+FOR EACH ROW
+BEGIN
+ROLLBACK TRANSACTION$
+SELECT 'No changes have been made.'$
+END$
+DELIMITER ; 
 

@@ -79,7 +79,7 @@ CREATE TABLE `job` (
   `position` varchar(40),
   `edra` varchar(45),
   `evaluator` varchar(12),
-  `announce_date` datetime DEFAULT GETDATE(),
+  `announce_date` datetime DEFAULT CURRENT_TIMESTAMP(),
   `submission_date` date
 );
 
@@ -123,7 +123,7 @@ CREATE TABLE `evaluationresult` (
 
 CREATE TABLE `log` (
   `user` varchar(12),
-  `timestamp` datetime DEFAULT GETDATE(),
+  `timestamp` datetime DEFAULT CURRENT_TIMESTAMP(),
   `act` ENUM ('insert', 'update', 'delete'),
   `table_changed` ENUM ('job', 'employee', 'requestevaluation'),
   `succesful` boolean

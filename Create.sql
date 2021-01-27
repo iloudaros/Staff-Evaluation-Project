@@ -178,4 +178,3 @@ ALTER TABLE `evaluationresult` ADD FOREIGN KEY (`empl_usrname`) REFERENCES `empl
 ALTER TABLE `evaluationresult` ADD FOREIGN KEY (`job_id`) REFERENCES `job` (`id`);
 
 ALTER TABLE `log` ADD FOREIGN KEY (`user`) REFERENCES `user` (`username`);
-

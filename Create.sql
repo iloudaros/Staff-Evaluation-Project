@@ -79,7 +79,7 @@ CREATE TABLE `job` (
   `position` varchar(40),
   `edra` varchar(45),
   `evaluator` varchar(12),
-  `announce_date` datetime DEFAULT GETDATE(),
+  `announce_date` datetime DEFAULT NOW(),
   `submission_date` date
 );
 
@@ -123,7 +123,7 @@ CREATE TABLE `evaluationresult` (
 
 CREATE TABLE `log` (
   `user` varchar(12),
-  `timestamp` datetime DEFAULT GETDATE(),
+  `timestamp` datetime DEFAULT NOW(),
   `act` ENUM ('insert', 'update', 'delete'),
   `table_changed` ENUM ('job', 'employee', 'requestevaluation'),
   `succesful` boolean
@@ -141,7 +141,7 @@ ALTER TABLE `evaluator` ADD FOREIGN KEY (`username`) REFERENCES `user` (`usernam
 
 ALTER TABLE `evaluator` ADD FOREIGN KEY (`firm`) REFERENCES `company` (`AFM`);
 
-ALTER TABLE `antikeimeno` ADD FOREIGN KEY (`title`) REFERENCES `antikeimeno` (`belongs_to`);
+ALTER TABLE `antikeimeno` ADD FOREIGN KEY (`belongs_to`) REFERENCES `antikeimeno` (`title`);
 
 ALTER TABLE `needs` ADD FOREIGN KEY (`j_id`) REFERENCES `job` (`id`);
 
@@ -178,3 +178,4 @@ ALTER TABLE `evaluationresult` ADD FOREIGN KEY (`empl_usrname`) REFERENCES `empl
 ALTER TABLE `evaluationresult` ADD FOREIGN KEY (`job_id`) REFERENCES `job` (`id`);
 
 ALTER TABLE `log` ADD FOREIGN KEY (`user`) REFERENCES `user` (`username`);
+

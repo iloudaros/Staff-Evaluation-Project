@@ -157,11 +157,9 @@ ALTER TABLE `requestevaluation` ADD FOREIGN KEY (`job_id`) REFERENCES `job` (`id
 
 ALTER TABLE `job` ADD FOREIGN KEY (`evaluator`) REFERENCES `evaluator` (`username`);
 
-ALTER TABLE `has_degree` ADD FOREIGN KEY (`degr_title`) REFERENCES `degree` (`titlos`);
-
-ALTER TABLE `has_degree` ADD FOREIGN KEY (`degr_idryma`) REFERENCES `degree` (`idryma`);
-
 ALTER TABLE `has_degree` ADD FOREIGN KEY (`empl_usrname`) REFERENCES `employee` (`username`);
+
+ALTER TABLE `has_degree` ADD FOREIGN KEY (`degr_title`, `degr_idryma`) REFERENCES `degree` (`titlos`, `idryma`);
 
 ALTER TABLE `applied_for` ADD FOREIGN KEY (`candidate`) REFERENCES `employee` (`username`);
 
@@ -178,3 +176,4 @@ ALTER TABLE `evaluationresult` ADD FOREIGN KEY (`empl_usrname`) REFERENCES `empl
 ALTER TABLE `evaluationresult` ADD FOREIGN KEY (`job_id`) REFERENCES `job` (`id`);
 
 ALTER TABLE `log` ADD FOREIGN KEY (`user`) REFERENCES `user` (`username`);
+

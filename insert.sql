@@ -65,15 +65,17 @@ INSERT INTO job VALUES (null,'2021-01-31','856.2','FR Analyst','Ioannina, Greece
 INSERT INTO job VALUES (null,'2021-02-07','3567.9','Manager','Ioannina, Greece','sknowles','2020-12-20 08:16:21','2020-12-30');
 
 
+INSERT INTO antikeimeno VALUES ('Public Relations','-',null);
+INSERT INTO antikeimeno VALUES ('Management','-',null);
+INSERT INTO antikeimeno VALUES ('Design','-',null);
+INSERT INTO antikeimeno VALUES ('Economics','-','Management');
 INSERT INTO antikeimeno VALUES ('Social Media','In charge of the company`s social media presence.','Public Relations');
-INSERT INTO antikeimeno VALUES ('Soft Skills','In charge of group`s dynamics and conflict resolution.','Management')
-INSERT INTO antikeimeno VALUES ('Logistics','In charge of the company`s economic management and analysis.','Economics');
+INSERT INTO antikeimeno VALUES ('Soft Skills','In charge of group`s dynamics and conflict resolution.','Management');
+INSERT INTO antikeimeno VALUES ('Logistics','In charge of the company`s economic management and analysis.','Management');
 INSERT INTO antikeimeno VALUES ('Graphic Design','In charge of the company`s logo design and website appearance.','Design');
 INSERT INTO antikeimeno VALUES ('Photoshop','In charge of creating posters, buisiness cards etc.','Design');
-INSERT INTO antikeimeno VALUES ('Public Relations','null','null');
-INSERT INTO antikeimeno VALUES ('Economics','null','Management');
-INSERT INTO antikeimeno VALUES ('Management','null','null');
-INSERT INTO antikeimeno VALUES ('Design','null','null');
+INSERT INTO antikeimeno VALUES ('Human Resources','-','Management');
+
 
 
 INSERT INTO degree VALUES ('Apolythrio Lykeioy','17o Geniko Lykeio Peristerioy','LYKEIO');
@@ -122,25 +124,25 @@ INSERT INTO languages VALUES ('ddavis','EN,FR,SP');
 INSERT INTO languages VALUES ('ewhite','EN,SP');
 
 
-INSERT INTO project VALUES ('xkratim','null','null','http://www.emp/xk/projnum.com');
-INSERT INTO project VALUES ('agray','null','null','http://www.emp/ag/projnum.com');
-INSERT INTO project VALUES ('agreenl','null','null','http://www.emp/agr/projnum.com');
-INSERT INTO project VALUES ('wgregg','null','null','http://www.emp/wg/projnum.com');
-INSERT INTO project VALUES ('anelson','null','null','http://www.emp/an/projnum.com');
-INSERT INTO project VALUES ('ddavis','null','null','http://www.emp/dd/projnum.com');
-INSERT INTO project VALUES ('ewhite','null','null','http://www.emp/ew/projnum.com');
+INSERT INTO project VALUES ('xkratim',null,'Project Description:','http://www.emp/xk/projnum.com');
+INSERT INTO project VALUES ('agray',null,'Project Description:','http://www.emp/ag/projnum.com');
+INSERT INTO project VALUES ('agreenl',null,'Project Description:','http://www.emp/agr/projnum.com');
+INSERT INTO project VALUES ('wgregg',null,'Project Description:','http://www.emp/wg/projnum.com');
+INSERT INTO project VALUES ('anelson',null,'Project Description:','http://www.emp/an/projnum.com');
+INSERT INTO project VALUES ('ddavis',null,'Project Description:','http://www.emp/dd/projnum.com');
+INSERT INTO project VALUES ('ewhite',null,'Project Description:','http://www.emp/ew/projnum.com');
 
 
 INSERT INTO needs VALUES ('0001','Social Media');
 INSERT INTO needs VALUES ('0002','Soft Skills');
-INSERT INTO needs VALUES ('0003','Logistics');
+INSERT INTO needs VALUES ('0003','Economics');
 INSERT INTO needs VALUES ('0004','Management');
-INSERT INTO needs VALUES ('0005','Social Media');
-INSERT INTO needs VALUES ('0006','Soft Skills');
+INSERT INTO needs VALUES ('0005','Photoshop');
+INSERT INTO needs VALUES ('0006','Design');
 INSERT INTO needs VALUES ('0007','Graphic Design');
 INSERT INTO needs VALUES ('0008','Public Relations');
-INSERT INTO needs VALUES ('0009','Economics');
-INSERT INTO needs VALUES ('0010','Management');
+INSERT INTO needs VALUES ('0009','Logistics');
+INSERT INTO needs VALUES ('0010','Human Resources');
 
 
 INSERT INTO applied_for VALUES ('sjames','0010');

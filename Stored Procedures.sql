@@ -32,6 +32,7 @@ END IF;
 
 DELIMITER ; 
 
+--Βάλε και ένα END$
 
 --Stored procedure 2
 

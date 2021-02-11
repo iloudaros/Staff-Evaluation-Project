@@ -4,7 +4,7 @@ CREATE TABLE `user` (
   `name` varchar(25),
   `surname` varchar(35),
   `reg_date` datetime,
-  `email` varchar(30)
+  `email` varchar(30),
   `is_admin` bit
 );
 

@@ -1,0 +1,223 @@
+Project Staff_Evaluation_Project{
+database_type: 'MySQL'
+note: '''
+This is a university Project
+'''
+}
+
+
+//Types of users
+
+Table user [headercolor: #27ae60]{
+  username varchar(12) [pk]
+  password varchar(10)
+  name varchar(25)
+  surname varchar(35)
+  reg_date datetime
+  email varchar(30)
+  is_admin bit
+}
+
+
+Table employee [headercolor: #27ae60]{
+  username varchar(12) [ref: - user.username, pk]
+  firm char(9) [ref:> company.AFM]
+  bio text
+  sistatikes varchar(35)
+  certificates varchar(35)
+  awards varchar(35)
+  exp_years tinyint(4)
+}
+
+ Table manager [headercolor: #27ae60]{
+  managerUsername varchar(12) [ref: - user.username, pk]
+  exp_years tinyint(4) [not null]
+  firm char(9) [ref: - company.AFM]
+
+}
+
+Table evaluator [headercolor: #27ae60]{
+  username varchar(12) [ref: - user.username, pk]
+  exp_years tinyint(4)
+  firm char(9) [ref: - company.AFM]
+}
+
+
+//Other Structures
+
+Table company [headercolor: #8e44ad]{
+  AFM char(9) [pk]
+  DOY varchar(15)
+  name varchar(35)
+  phone bigint(16)
+  street varchar(15)
+  num tinyint(4)
+  city varchar(15)
+  country varchar(15)
+
+}
+
+
+Table antikeimeno [headercolor: #316896]{
+  title varchar(36) [pk]
+  descr tinytext
+  belongs_to varchar(36) [ref: > antikeimeno.title]
+}
+
+
+Table needs  [headercolor: #316896]{
+  j_id int(4) [increment, ref: > job.id]
+  a_title varchar(36) [unique, ref: > antikeimeno.title]
+
+  Indexes {
+    (j_id, a_title) [pk]
+  }
+}
+
+
+Table project [headercolor: #16a085]{
+  empl varchar(12) [ref: > employee.username]
+  num tinyint(4) [unique,increment]
+  descr text
+  url varchar(60)
+
+  Indexes
+  {
+    (empl, num) [pk]
+  }
+}
+
+
+
+Table languages [headercolor: #16a085]{
+  employee varchar(12) [ref:> employee.username]
+  lang SET('EN','FR','SP','GR')
+
+  Indexes
+  {
+  (employee, lang) [pk]
+  }
+}
+
+
+Table requestevaluation [headercolor: #f39c12]{
+  empl_usrname varchar(12) [ref:> employee.username]
+  job_id int(4) [ref:> job.id]
+
+  Indexes
+  {
+    (empl_usrname, job_id) [pk]
+  }
+
+}
+
+
+Table job [headercolor: #2c3e50]{
+  id int(4) [pk,increment]
+  start_date date
+  salary float(6,1)
+  position varchar(40)
+  edra varchar(45)
+  evaluator varchar(12) [ref: > evaluator.username]
+  announce_date datetime [default: `NOW()`]
+  submission_date date
+}
+
+
+enum ekpaidevsi {//Βαθμίδα εκπαίδευσης που έχει φτάσει κάποιος
+  LYKEIO
+  UNIV
+  MASTER
+  PHD
+}
+
+Table degree{
+  titlos varchar(50)
+  idryma varchar(40)
+  bathmida ekpaidevsi
+
+  Indexes
+  {
+    (titlos, idryma) [pk]
+  }
+}
+
+
+Table has_degree [headercolor: #16a085]{
+  degr_title varchar(50)
+  degr_idryma varchar(40)
+  empl_usrname varchar(12) [ref:> employee.username]
+  etos year(4)
+  grade float(3,1)
+
+  Indexes
+  {
+  (degr_title, degr_idryma, empl_usrname) [pk]
+  }
+}
+//Ref: has_degree.(degr_title, degr_idryma) > degree.(titlos, idryma)
+
+
+Table applied_for [headercolor: #2c3e50]{
+  candidate varchar(12) [ref:> employee.username]
+  job_application int(4) [ref:> job.id]
+}
+
+
+Table evaluation [headercolor: #f39c12]{
+  empl_usrname varchar (12) [ref:> employee.username]
+  phase tinyint
+  grade tinyint
+  ev_username varchar(12) [ref:> evaluator.username]
+
+  Indexes
+  {
+    (empl_usrname, phase) [pk]
+  }
+}
+
+Table evaluationresult [headercolor: #f39c12]{
+  EvID varchar(12) [ref:> evaluator.username]
+  empl_usrname varchar(12) [ref:> employee.username]
+  job_id int(4) [ref:> job.id]
+  grade int(4)
+  comments varchar(255)
+
+  Indexes
+  {
+    (EvID, empl_usrname) [pk]
+  }
+}
+
+enum act_kind{
+  insert
+  update
+  delete
+}
+
+enum table_name{
+job
+employee
+requestevaluation
+}
+
+
+Table log  [headercolor: #c0392b] {
+  user varchar(12) [ref:> user.username]
+  timestamp datetime [default: `NOW()`]
+  act act_kind
+  table_changed table_name
+  succesful boolean
+}
+
+TableGroup Evaluation_Process { // tablegroup is case-insensitive.
+    evaluation
+    evaluationresult
+    requestevaluation
+}
+
+TableGroup employee_assets { // tablegroup is case-insensitive.
+    project
+    languages
+    has_degree
+}

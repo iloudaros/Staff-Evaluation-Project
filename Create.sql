@@ -36,7 +36,7 @@ CREATE TABLE `company` (
   `name` varchar(35),
   `phone` bigint(16),
   `street` varchar(15),
-  `num` tinyint(4),
+  `num` int,
   `city` varchar(15),
   `country` varchar(15)
 );
@@ -177,4 +177,3 @@ ALTER TABLE `evaluationresult` ADD FOREIGN KEY (`empl_usrname`) REFERENCES `empl
 ALTER TABLE `evaluationresult` ADD FOREIGN KEY (`job_id`) REFERENCES `job` (`id`);
 
 ALTER TABLE `log` ADD FOREIGN KEY (`user`) REFERENCES `user` (`username`);
-

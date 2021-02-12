@@ -5,7 +5,7 @@ BEGIN
 declare incomplete int;
 declare applications int;
 
-SELECT
+SELECT 
     COUNT(*)
 INTO applications FROM
     requestevaluation
@@ -16,20 +16,16 @@ if (applications=0) then
 	select "Δεν υπάρχουν αξιολογήσεις σε εξέληξη κούκλ@ μου";
 else
 
-SELECT
-    COUNT(*)
-INTO incomplete FROM
-    evaluation
-WHERE
-   job=id and empl_usrname NOT IN (SELECT
-            empl_usrname
-        FROM
-            evaluation
-        WHERE
-            phase = 3);
+SELECT COUNT(*)
+INTO incomplete 
+FROM evaluation
+WHERE job=id and empl_usrname NOT IN 
+	(SELECT empl_usrname
+	FROM evaluation
+	WHERE phase = 3);
 
 
-if (incomplete=0) then
+if (incomplete>=0) then
 select "Οριστικοποιημένοι Πίνακες";
 select empl_usrname as 'Username', job_id as 'Job', grade as 'Grade'
 from evaluationresult

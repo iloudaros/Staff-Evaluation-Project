@@ -107,10 +107,11 @@ CREATE TABLE `applied_for` (
 
 CREATE TABLE `evaluation` (
   `empl_usrname` varchar(12),
+  `job` int(4),
   `phase` tinyint,
   `grade` tinyint,
   `ev_username` varchar(12),
-  PRIMARY KEY (`empl_usrname`, `phase`)
+  PRIMARY KEY (`empl_usrname`, `job`, `phase`)
 );
 
 CREATE TABLE `evaluationresult` (
@@ -167,6 +168,8 @@ ALTER TABLE `applied_for` ADD FOREIGN KEY (`candidate`) REFERENCES `employee` (`
 ALTER TABLE `applied_for` ADD FOREIGN KEY (`job_application`) REFERENCES `job` (`id`);
 
 ALTER TABLE `evaluation` ADD FOREIGN KEY (`empl_usrname`) REFERENCES `employee` (`username`);
+
+ALTER TABLE `evaluation` ADD FOREIGN KEY (`job`) REFERENCES `job` (`id`);
 
 ALTER TABLE `evaluation` ADD FOREIGN KEY (`ev_username`) REFERENCES `evaluator` (`username`);
 

@@ -111,70 +111,6 @@ INSERT INTO has_degree VALUES ('PhD in Marketing Science', 'PaPei, Tmhma Organws
 INSERT INTO has_degree VALUES ('Didaktoriko stis Oikonomikes Episthmes','PaPe, Tmhma Oikonomikwn Episthmwn','ewhite','2016','10.0');
 
 
-INSERT INTO languages VALUES ('xkratim','GR,EN');
-INSERT INTO languages VALUES ('sjames','EN,FR');
-INSERT INTO languages VALUES ('agray','EN,SP,FR');
-INSERT INTO languages VALUES ('agreenl','EN,GR,FR');
-INSERT INTO languages VALUES ('wgregg','EN');
-INSERT INTO languages VALUES ('jstewart','EN,FR');
-INSERT INTO languages VALUES ('anelson','EN,GR');
-INSERT INTO languages VALUES ('cstinton','EN,FR');
-INSERT INTO languages VALUES ('abrown','EN');
-INSERT INTO languages VALUES ('ddavis','EN,FR,SP');
-INSERT INTO languages VALUES ('ewhite','EN,SP');
-
-
-INSERT INTO project VALUES ('xkratim',null,'Project Description:','http://www.emp/xk/projnum.com');
-INSERT INTO project VALUES ('agray',null,'Project Description:','http://www.emp/ag/projnum.com');
-INSERT INTO project VALUES ('agreenl',null,'Project Description:','http://www.emp/agr/projnum.com');
-INSERT INTO project VALUES ('wgregg',null,'Project Description:','http://www.emp/wg/projnum.com');
-INSERT INTO project VALUES ('anelson',null,'Project Description:','http://www.emp/an/projnum.com');
-INSERT INTO project VALUES ('ddavis',null,'Project Description:','http://www.emp/dd/projnum.com');
-INSERT INTO project VALUES ('ewhite',null,'Project Description:','http://www.emp/ew/projnum.com');
-
-
-INSERT INTO needs VALUES ('0001','Social Media');
-INSERT INTO needs VALUES ('0002','Soft Skills');
-INSERT INTO needs VALUES ('0003','Economics');
-INSERT INTO needs VALUES ('0004','Management');
-INSERT INTO needs VALUES ('0005','Photoshop');
-INSERT INTO needs VALUES ('0006','Design');
-INSERT INTO needs VALUES ('0007','Graphic Design');
-INSERT INTO needs VALUES ('0008','Public Relations');
-INSERT INTO needs VALUES ('0009','Logistics');
-INSERT INTO needs VALUES ('0010','Human Resources');
-
-
-INSERT INTO applied_for VALUES ('sjames','0010');
-INSERT INTO applied_for VALUES ('cstinton','0002');
-INSERT INTO applied_for VALUES ('wgregg','0007');
-INSERT INTO applied_for VALUES ('agray','0003');
-
-
-INSERT INTO requestevaluation VALUES ('ewhite','0009');
-INSERT INTO requestevaluation VALUES ('ddavis','0005');
-INSERT INTO requestevaluation VALUES ('agreenl','0006');
-INSERT INTO requestevaluation VALUES ('anelson','0007');
-
-
-INSERT INTO evaluation VALUES ('ewhite','1','3','sknowles');
-INSERT INTO evaluation VALUES ('ewhite','2','3','sknowles');
-INSERT INTO evaluation VALUES ('ewhite','3','3','sknowles');
-INSERT INTO evaluation VALUES ('ddavis','1','4','emarch');
-INSERT INTO evaluation VALUES ('ddavis','2','3','emarch');
-INSERT INTO evaluation VALUES ('agreenl','1','3','emarch');
-INSERT INTO evaluation VALUES ('agreenl','2','2','emarch');
-INSERT INTO evaluation VALUES ('agreenl','3','3','emarch');
-INSERT INTO evaluation VALUES ('anelson','1','3','aanson');
-INSERT INTO evaluation VALUES ('anelson','2','3','aanson');
-INSERT INTO evaluation VALUES ('anelson','3','4','aanson');
-
-
-INSERT INTO has_degree VALUES ('Master`s Degree on New Technologies and Marketing','UNIWA, Grafistikhs kai Opt Epikoinwnias','abrown','2018','9.4');
-INSERT INTO has_degree VALUES ('Ptyxio Statistikhs kai Asfalistikhs','PaPei, Statistikhs kai Asfalistikhs','ddavis','2011','9.8');
-INSERT INTO has_degree VALUES ('PhD in Marketing Science', 'PaPei, Tmhma Organwshs kai Dioikhshs','ddavis','2016','9.1');
-INSERT INTO has_degree VALUES ('Didaktoriko stis Oikonomikes Episthmes','PaPe, Tmhma Oikonomikwn Episthmwn','ewhite','2016','10.0');
-
 
 INSERT INTO languages VALUES ('xkratim','GR,EN');
 INSERT INTO languages VALUES ('sjames','EN,FR');
@@ -222,17 +158,17 @@ INSERT INTO requestevaluation VALUES ('agreenl','0006');
 INSERT INTO requestevaluation VALUES ('anelson','0007');
 
 
-INSERT INTO evaluation VALUES ('ewhite','1','3','sknowles');
-INSERT INTO evaluation VALUES ('ewhite','2','3','sknowles');
-INSERT INTO evaluation VALUES ('ewhite','3','3','sknowles');
-INSERT INTO evaluation VALUES ('ddavis','1','4','emarch');
-INSERT INTO evaluation VALUES ('ddavis','2','3','emarch');
-INSERT INTO evaluation VALUES ('agreenl','1','3','emarch');
-INSERT INTO evaluation VALUES ('agreenl','2','2','emarch');
-INSERT INTO evaluation VALUES ('agreenl','3','3','emarch');
-INSERT INTO evaluation VALUES ('anelson','1','3','aanson');
-INSERT INTO evaluation VALUES ('anelson','2','3','aanson');
-INSERT INTO evaluation VALUES ('anelson','3','4','aanson');
+INSERT INTO evaluation VALUES ('ewhite','9','1','3','sknowles');
+INSERT INTO evaluation VALUES ('ewhite','9','2','3','sknowles');
+INSERT INTO evaluation VALUES ('ewhite','9','3','3','sknowles');
+INSERT INTO evaluation VALUES ('ddavis','9','1','4','emarch');
+INSERT INTO evaluation VALUES ('ddavis','9','2','3','emarch');
+INSERT INTO evaluation VALUES ('agreenl','6','1','3','emarch');
+INSERT INTO evaluation VALUES ('agreenl','6','2','2','emarch');
+INSERT INTO evaluation VALUES ('agreenl','6','3','3','emarch');
+INSERT INTO evaluation VALUES ('anelson','7','1','3','aanson');
+INSERT INTO evaluation VALUES ('anelson','7','2','3','aanson');
+INSERT INTO evaluation VALUES ('anelson','7','3','4','aanson');
 
 
 INSERT INTO evaluationresult VALUES ('sknowles','ewhite','0009',9,'commentscommentscommentscomments');

@@ -51,7 +51,7 @@ Table company [headercolor: #8e44ad]{
   name varchar(35)
   phone bigint(16)
   street varchar(15)
-  num tinyint(4)
+  num int
   city varchar(15)
   country varchar(15)
 
@@ -202,7 +202,7 @@ requestevaluation
 }
 
 
-Table log  [headercolor: #c0392b] {
+Table log [headercolor: #c0392b] {
   user varchar(12) [ref:> user.username]
   timestamp datetime [default: `NOW()`]
   act act_kind

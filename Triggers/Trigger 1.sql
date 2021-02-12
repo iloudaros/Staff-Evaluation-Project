@@ -1,9 +1,8 @@
---Trigger 1 
 DELIMITER $
 
 CREATE TRIGGER upj_log AFTER UPDATE
-ON job 
-FOR EACH ROW 
+ON job
+FOR EACH ROW
 BEGIN
 
 SET NOCOUNT ON;
@@ -15,8 +14,6 @@ INSERT job.log (EventDate,
 				EventType,
 				TableChanged,
 				Success	);
-SELECT 
+SELECT
 	--@EventDate.value(CURRENT_TIMESTAMP, DATETIME);
 	@EventData.value('(/EVENT_INSTANCE/EventType)[1]', ENUM);
-	
-

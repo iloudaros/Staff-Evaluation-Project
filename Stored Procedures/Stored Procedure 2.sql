@@ -28,7 +28,7 @@ IF(@g1=1) AND (@g2=1) AND (g3=1); THEN
 	SET @fg2 = SELECT grade FROM evaluation WHERE phase=2;
 	SET @fg3 = SELECT grade FROM evaluation WHERE phase=3;
 	UPDATE evaluationresult
-	SET grade = (@fg1+@fg2+@fg3)/3;
+	SET grade = (@fg1+@fg2+@fg3);
 ELSE
 	SELECT 'Your evaluation grading is still in progress.';
 END IF;

@@ -1,4 +1,4 @@
-CREATE DEFINER=`root`@`localhost` PROCEDURE `job_progress`(id int(4))
+CREATE PROCEDURE `job_progress`(id int(4))
 BEGIN
 
 

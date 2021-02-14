@@ -4,8 +4,16 @@
 <dict>
 	<key>backingScale</key>
 	<real>1</real>
+	<key>bitmapFilename</key>
+	<string>bitmap</string>
+	<key>mutationIdentifier</key>
+	<string>15CE9044-2EFA-4A61-8512-96D24B995B17</string>
 	<key>pathFilename</key>
 	<string>path</string>
+	<key>size</key>
+	<data>
+	NC10UHpTVFAQAAAAQKUaAAAAAABAnbwAAAAAAA==
+	</data>
 	<key>version</key>
 	<integer>1</integer>
 </dict>

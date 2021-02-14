@@ -8,7 +8,7 @@ This is a university Project
 
 //Types of users
 
-Table user [headercolor: #27ae60]{
+Table user  [headercolor: #27ae60] {
   username varchar(12) [pk]
   password varchar(10)
   name varchar(25)
@@ -19,7 +19,7 @@ Table user [headercolor: #27ae60]{
 }
 
 
-Table employee [headercolor: #27ae60]{
+Table employee [headercolor: #27ae60] {
   username varchar(12) [ref: - user.username, pk]
   firm char(9) [ref:> company.AFM]
   bio text
@@ -29,14 +29,14 @@ Table employee [headercolor: #27ae60]{
   exp_years tinyint(4)
 }
 
- Table manager [headercolor: #27ae60]{
+ Table manager [headercolor: #27ae60] {
   managerUsername varchar(12) [ref: - user.username, pk]
   exp_years tinyint(4) [not null]
   firm char(9) [ref: - company.AFM]
 
 }
 
-Table evaluator [headercolor: #27ae60]{
+Table evaluator [headercolor: #27ae60] {
   username varchar(12) [ref: - user.username, pk]
   exp_years tinyint(4)
   firm char(9) [ref: - company.AFM]
@@ -45,7 +45,7 @@ Table evaluator [headercolor: #27ae60]{
 
 //Other Structures
 
-Table company [headercolor: #8e44ad]{
+Table company [headercolor: #8e44ad] {
   AFM char(9) [pk]
   DOY varchar(15)
   name varchar(35)
@@ -58,14 +58,14 @@ Table company [headercolor: #8e44ad]{
 }
 
 
-Table antikeimeno [headercolor: #316896]{
+Table antikeimeno [headercolor: #316896] {
   title varchar(36) [pk]
   descr tinytext
   belongs_to varchar(36) [ref: > antikeimeno.title]
 }
 
 
-Table needs  [headercolor: #316896]{
+Table needs  [headercolor: #316896] {
   j_id int(4) [increment, ref: > job.id]
   a_title varchar(36) [unique, ref: > antikeimeno.title]
 
@@ -75,7 +75,7 @@ Table needs  [headercolor: #316896]{
 }
 
 
-Table project [headercolor: #16a085]{
+Table project [headercolor: #16a085] {
   empl varchar(12) [ref: > employee.username]
   num tinyint(4) [unique,increment]
   descr text
@@ -89,7 +89,7 @@ Table project [headercolor: #16a085]{
 
 
 
-Table languages [headercolor: #16a085]{
+Table languages [headercolor: #16a085] {
   employee varchar(12) [ref:> employee.username]
   lang SET('EN','FR','SP','GR')
 
@@ -100,7 +100,7 @@ Table languages [headercolor: #16a085]{
 }
 
 
-Table requestevaluation [headercolor: #f39c12]{
+Table requestevaluation [headercolor: #f39c12] {
   empl_usrname varchar(12) [ref:> employee.username]
   job_id int(4) [ref:> job.id]
 
@@ -112,7 +112,7 @@ Table requestevaluation [headercolor: #f39c12]{
 }
 
 
-Table job [headercolor: #2c3e50]{
+Table job [headercolor: #2c3e50] {
   id int(4) [pk,increment]
   start_date date
   salary float(6,1)
@@ -124,14 +124,14 @@ Table job [headercolor: #2c3e50]{
 }
 
 
-enum ekpaidevsi {//Βαθμίδα εκπαίδευσης που έχει φτάσει κάποιος
+enum ekpaidevsi { //Βαθμίδα εκπαίδευσης που έχει φτάσει κάποιος
   LYKEIO
   UNIV
   MASTER
   PHD
 }
 
-Table degree{
+Table degree  {
   titlos varchar(50)
   idryma varchar(40)
   bathmida ekpaidevsi
@@ -143,7 +143,7 @@ Table degree{
 }
 
 
-Table has_degree [headercolor: #16a085]{
+Table has_degree [headercolor: #16a085] {
   degr_title varchar(50)
   degr_idryma varchar(40)
   empl_usrname varchar(12) [ref:> employee.username]
@@ -155,28 +155,28 @@ Table has_degree [headercolor: #16a085]{
   (degr_title, degr_idryma, empl_usrname) [pk]
   }
 }
-//Ref: has_degree.(degr_title, degr_idryma) > degree.(titlos, idryma)
 
 
-Table applied_for [headercolor: #2c3e50]{
+Table applied_for [headercolor: #2c3e50] {
   candidate varchar(12) [ref:> employee.username]
   job_application int(4) [ref:> job.id]
 }
 
 
-Table evaluation [headercolor: #f39c12]{
+Table evaluation [headercolor: #f39c12] {
   empl_usrname varchar (12) [ref:> employee.username]
+  job int(4) [ref:> job.id]
   phase tinyint
   grade tinyint
   ev_username varchar(12) [ref:> evaluator.username]
 
   Indexes
   {
-    (empl_usrname, phase) [pk]
+    (empl_usrname, job, phase) [pk]
   }
 }
 
-Table evaluationresult [headercolor: #f39c12]{
+Table evaluationresult [headercolor: #f39c12] {
   EvID varchar(12) [ref:> evaluator.username]
   empl_usrname varchar(12) [ref:> employee.username]
   job_id int(4) [ref:> job.id]
@@ -185,24 +185,24 @@ Table evaluationresult [headercolor: #f39c12]{
 
   Indexes
   {
-    (EvID, empl_usrname) [pk]
+    (EvID, empl_usrname,job_id) [pk]
   }
 }
 
-enum act_kind{
+enum act_kind {
   insert
   update
   delete
 }
 
-enum table_name{
+enum table_name {
 job
 employee
 requestevaluation
 }
 
 
-Table log [headercolor: #c0392b] {
+Table log  [headercolor: #c0392b] {
   user varchar(12) [ref:> user.username]
   timestamp datetime [default: `NOW()`]
   act act_kind
@@ -210,14 +210,27 @@ Table log [headercolor: #c0392b] {
   succesful boolean
 }
 
-TableGroup Evaluation_Process { // tablegroup is case-insensitive.
+TableGroup evaluation_process {
     evaluation
     evaluationresult
     requestevaluation
 }
 
-TableGroup employee_assets { // tablegroup is case-insensitive.
+TableGroup employee_assets {
     project
     languages
     has_degree
+}
+
+TableGroup job_and_requirements {
+    job
+    needs
+    antikeimeno
+}
+
+TableGroup user_types {
+  user
+  evaluator
+  employee
+  manager
 }

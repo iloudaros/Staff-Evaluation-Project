@@ -7,11 +7,17 @@ DECLARE ev_name VARCHAR(25);
 DECLARE ev_username VARCHAR(25);
 
 
-SELECT username INTO emp_username FROM user WHERE user.name =em_name AND user.username=em_surname;
+SELECT
+    username
+INTO em_username
+FROM user
+WHERE
+    user.name = em_name
+        AND user.surname = em_surname;
 
 IF(em_username != NULL) THEN
 
-	IF( not exists(SELECT * FROM requestevaluation WHERE em_username=empl_usrname)) THEN
+	IF( not exists(SELECT * FROM applied_for WHERE candidate=empl_usrname)) THEN
 
 		SELECT 'Άι μωρ@ αφού δεν έχεις κάνει καν αίτηση ακόμη.' as '';
 
@@ -23,23 +29,33 @@ IF(em_username != NULL) THEN
 
 		SELECT 'Τα αποτελέσματα σας κυρι@ τέτοι@ μου:' as '';
 
-		SELECT evaluationresult.empl_usrname,evaluationresult.job_id,evaluationresult.grade,evaluationresult.comments,user.name,user.surname
-		FROM evaluationresult
-		WHERE empl_usrname=em_username
-		INNER JOIN user on EvID = username;
+		SELECT
+    	empl_usrname,
+    	job_id,
+    	grade,
+    	name,
+    	surname
+		FROM evaluationresult INNER JOIN user on EvID = username
+		WHERE empl_usrname=em_username;
 
 		END IF;
 
 
 		IF( exists(select job,empl_usrname from evaluation where phase = 1 and job,empl_usrname not in
-			(select job from evaluation where phase=3) THEN
+			(select job from evaluation where phase=3)) THEN
 
 			SELECT 'Αυτές οι αξιολογήσεις δεν έχουν ολοκληρωθεί ακόμη:' as '';
 
-			SELECT evaluation.empl_usrname,evaluation.job,evaluation.grade,evaluation.phase,user.name,user.surname FROM evaluationresult
-			WHERE empl_usrname=em_username AND phase !=3 AND job,empl_usrname not in
-			(select job from evaluation where phase=3)
-			INNER JOIN user on EvID = username;
+			SELECT
+      	empl_usrname,
+      	job,
+      	grade,
+      	phase,
+        name,
+        surname
+      FROM evaluation INNER JOIN user on ev_username = username
+      WHERE empl_usrname=em_username AND phase !=3 AND job,empl_usrname not in
+			(select job from evaluation where phase=3);
 
 		END IF;
 

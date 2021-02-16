@@ -36,8 +36,9 @@ end if;
 
 if (incomplete>0)
 then
-select "Αξιολόγηση σε εξέληξη. Εκρεμμούν:" as '',incomplete as '';
+select "Αξιολόγηση σε εξέληξη. Εκρεμμούν:"as '',incomplete;
 end if;
 
 end if;
+END
 END

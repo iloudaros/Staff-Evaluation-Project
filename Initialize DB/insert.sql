@@ -169,6 +169,11 @@ INSERT INTO evaluation VALUES ('agreenl','6','3','3','emarch');
 INSERT INTO evaluation VALUES ('anelson','7','1','3','aanson');
 INSERT INTO evaluation VALUES ('anelson','7','2','3','aanson');
 INSERT INTO evaluation VALUES ('anelson','7','3','4','aanson');
+INSERT INTO evaluation VALUES ('ddavis','9','1','2','kander');
+INSERT INTO evaluation VALUES ('ddavis','9','2','2','kander');
+INSERT INTO evaluation VALUES ('ddavis','9','3','3','kander');
+
+
 
 
 INSERT INTO evaluationresult VALUES ('sknowles','ewhite','0009',9,'commentscommentscommentscomments');

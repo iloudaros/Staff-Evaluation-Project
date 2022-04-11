@@ -225,6 +225,7 @@ DELIMITER ;
 
 
 ---INSERT
+DELIMITER $
 
 CREATE TRIGGER requestevaluation_log_binsert BEFORE INSERT
 ON requestevaluation
@@ -237,7 +238,7 @@ insert into log values(@getuser,@lastlogged,'insert','requestevaluation',false);
 
 END$
 
-CREATE TRIGGER requestevaluation_log_binsert AFTER INSERT
+CREATE TRIGGER requestevaluation_log_ainsert AFTER INSERT
 ON requestevaluation
 FOR EACH ROW
 BEGIN
@@ -251,6 +252,7 @@ DELIMITER ;
 
 
 ---DELETE
+DELIMITER $
 
 CREATE TRIGGER requestevaluation_log_bdelete BEFORE DELETE
 ON requestevaluation

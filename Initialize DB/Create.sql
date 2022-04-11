@@ -5,7 +5,10 @@ CREATE TABLE `user` (
   `surname` varchar(35),
   `reg_date` datetime,
   `email` varchar(30),
-  `is_admin` bit
+  `is_admin` bit,
+  `is_employee` bit,
+  `is_evaluator` bit,
+  `is_manager` bit
 );
 
 CREATE TABLE `employee` (

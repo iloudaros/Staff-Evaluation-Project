@@ -41,8 +41,8 @@ IF(em_username != NULL) THEN
 		END IF;
 
 
-		IF( exists(select job,empl_usrname from evaluation where phase = 1 and job,empl_usrname not in
-			(select job from evaluation where phase=3)) THEN
+		IF (exists(select job,empl_usrname from evaluation where phase = 1 and job,empl_usrname not in
+			(select job from evaluation where phase=3))) THEN
 
 			SELECT 'Αυτές οι αξιολογήσεις δεν έχουν ολοκληρωθεί ακόμη:' as '';
 
